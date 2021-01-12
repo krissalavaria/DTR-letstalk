@@ -32,9 +32,9 @@ Route::get('scanner-entry', function () {
 	return view('scanner.scan-entry');
 })->name('scanner-entry')->middleware('Guard');
 
-// Search User
-Route::get('/search_user', 'VueQrCodeReader@search_user');
+Route::get('get_users_temp', 'VueQrCodeReader@get_users_temp')->name('get_users_temp');
 
+// Admin Routes
 Route::group(['middleware' => 'Admin'], function () {
 	Route::get('table-list', function () {
 		return view('pages.table_list');

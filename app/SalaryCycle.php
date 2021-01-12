@@ -12,4 +12,6 @@ class SalaryCycle extends Model
         'is_cleared',
         'cycle_date',
     ];
+
+    protected $table = 'salary_cycle';
 }

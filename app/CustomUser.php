@@ -50,4 +50,5 @@ class CustomUser extends Authenticatable
 
     protected $table = 'user_account';
     protected $dates = ['deleted_at'];
+    
 }

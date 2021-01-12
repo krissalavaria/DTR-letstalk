@@ -6,6 +6,8 @@
 
 require("./bootstrap");
 
+import VModal from 'vue-js-modal';
+
 window.Vue = require("vue");
 
 /**
@@ -27,6 +29,10 @@ Vue.component(
     "qr-component",
     require("./components/VueQrCodeReader.vue").default
 );
+Vue.component(
+    "time-sheet-component",
+    require("./components/TimeSheets.vue").default
+);
 
 Vue.directive("focus", {
     // When the bound element is inserted into the DOM...
@@ -35,6 +41,8 @@ Vue.directive("focus", {
         el.focus();
     }
 });
+
+Vue.use(VModal);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

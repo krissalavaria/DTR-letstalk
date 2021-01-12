@@ -7,56 +7,18 @@
                     <a class="btn btn-primary" href="{{ route('scanner-entry') }}">Scan Entries</a>
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">Scan Entries</h4>
-                            <p class="card-category">Manage Entries</p>
+                            <h4 class="card-title ">List of Employees In and Out</h4>
+                            <p class="card-category">Manage Employees Entries</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <div class="col-sm-12 d-flex">
                                     <div class="table-responsive">
-                                        <table class="table">
-                                          <thead class=" text-primary">
-                                            <th>
-                                              ID
-                                            </th>
-                                            <th>
-                                              Name
-                                            </th>
-                                            <th>
-                                              Country
-                                            </th>
-                                            <th>
-                                              City
-                                            </th>
-                                            <th>
-                                              Salary
-                                            </th>
-                                          </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td>
-                                                1
-                                              </td>
-                                              <td>
-                                                Dakota Rice
-                                              </td>
-                                              <td>
-                                                Niger
-                                              </td>
-                                              <td>
-                                                Oud-Turnhout
-                                              </td>
-                                              <td class="text-primary">
-                                                $36,738
-                                              </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
+                                        <div id="app">
+                                          <time-sheet-component></time-sheet-component>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="app">
-                                <qr-component></qr-component>
                             </div>
                         </div>
                     </div>

@@ -346,7 +346,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="bmd-form-group{{ $errors->has('salary_type_id ') ? ' has-danger' : '' }}">
+                                    <div class="bmd-form-group{{ $errors->has('salary_type_id') ? ' has-danger' : '' }}">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text">
@@ -354,9 +354,9 @@
                                               </span>
                                             </div>
                                             <select type="text" name="salary_type_id" class="form-control">
-                                                <option value="0" selected>Select Salary Cycle</option>
+                                                <option value="0" selected>Select Salary Type</option>
                                                 @foreach($salary_types as $salarytype)
-                                                    <option value="{{ $salarytype->id  }}">{{ $salarytype->type  }}</option>
+                                                    <option value="{{ $salarytype->ID  }}">{{ $salarytype->type  }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

@@ -186,7 +186,7 @@ class UserController extends Controller
     public function get_last_employee_no()
     {
         // $employee_no = DB::table('user_accounts')->orderBy('id', 'desc')->select('employee_no')->first();
-        $employee_no = User::pluck('employee_no')->last();
+        $employee_no = CustomUser::pluck('employee_no')->last();
         return $employee_no;
     }
 

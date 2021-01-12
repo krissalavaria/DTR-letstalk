@@ -18,4 +18,8 @@ class TimeSheet extends Model
     ];
 
     protected $table = 'time_sheet';
+
+    public function users() {
+        return $this->belongsTo('App\CustomUser', 'user_account_id');
+    }
 }

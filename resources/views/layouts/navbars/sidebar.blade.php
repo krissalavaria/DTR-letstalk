@@ -23,7 +23,7 @@
                 <li class="nav-item{{ $activePage == 'scan-entry' ? ' active' : '' }}">
                     <a class="nav-link" href="{{ route('scan-entry') }}">
                         <i class="material-icons">qr_code</i>
-                        <p>{{ __('Scan Entry') }}</p>
+                        <p>{{ __('Temperature Monitoring') }}</p>
                     </a>
                 </li>
 
