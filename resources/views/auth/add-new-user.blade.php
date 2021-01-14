@@ -249,7 +249,7 @@
                                                 <option value="0" selected>Select Province</option>
                                                 @foreach($provinces as $province)
                                                     <option
-                                                        value="{{ $province->id  }}">{{ $province->prov_desc  }}</option>
+                                                        value="{{ $province->ID  }}">{{ $province->prov_desc  }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -271,7 +271,7 @@
                                             <select type="text" name="city_municipality_id" class="form-control">
                                                 <option value="0" selected>Select City/Municipality</option>
                                                 @foreach($cities as $city)
-                                                    <option value="{{ $city->id  }}">{{ $city->citymun_desc  }}</option>
+                                                    <option value="{{ $city->ID  }}">{{ $city->citymun_desc  }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -293,7 +293,7 @@
                                             <select type="text" name="barangay_id" class="form-control">
                                                 <option value="0" selected>Select Barangay</option>
                                                 @foreach($barangays as $barangay)
-                                                    <option value="{{ $barangay->id  }}">{{ $barangay->desc  }}</option>
+                                                    <option value="{{ $barangay->ID  }}">{{ $barangay->desc  }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -304,7 +304,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="bmd-form-group{{ $errors->has('department_id ') ? ' has-danger' : '' }}">
+                                    <div class="bmd-form-group{{ $errors->has('department_id') ? ' has-danger' : '' }}">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text">
@@ -314,18 +314,18 @@
                                             <select type="text" name="department_id" class="form-control">
                                                 <option value="0" selected>Select Department</option>
                                                 @foreach($departments as $department)
-                                                    <option value="{{ $department->id  }}">{{ $department->name  }}</option>
+                                                    <option value="{{ $department->ID  }}">{{ $department->name  }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         @if ($errors->has('department_id '))
                                             <div id="department_id -error" class="error text-danger pl-3" for="department_id "
                                                  style="display: block;">
-                                                <strong>{{ $errors->first('department_id ') }}</strong>
+                                                <strong>{{ $errors->first('department_id') }}</strong>
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="bmd-form-group{{ $errors->has('designation_id ') ? ' has-danger' : '' }}">
+                                    <div class="bmd-form-group{{ $errors->has('designation_id') ? ' has-danger' : '' }}">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text">
@@ -335,7 +335,7 @@
                                             <select type="text" name="designation_id" class="form-control">
                                                 <option value="0" selected>Select Designation</option>
                                                 @foreach($designations as $designation)
-                                                    <option value="{{ $designation->id  }}">{{ $designation->name  }}</option>
+                                                    <option value="{{ $designation->ID  }}">{{ $designation->name  }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -364,6 +364,27 @@
                                             <div id="salary_type_id-error" class="error text-danger pl-3" for="salary_type_id"
                                                  style="display: block;">
                                                 <strong>{{ $errors->first('salary_type_id') }}</strong>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="bmd-form-group{{ $errors->has('user_acct_type_id') ? ' has-danger' : '' }}">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text">
+                                                  <i class="material-icons">face</i>
+                                              </span>
+                                            </div>
+                                            <select type="text" name="user_acct_type_id" class="form-control">
+                                                <option value="0" selected>Select Account Type</option>
+                                                @foreach($user_account_types as $user_acct_type)
+                                                    <option value="{{ $user_acct_type->ID  }}">{{ $user_acct_type->account_name  }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        @if ($errors->has('user_acct_type_id'))
+                                            <div id="user_acct_type_id-error" class="error text-danger pl-3" for="user_acct_type_id"
+                                                 style="display: block;">
+                                                <strong>{{ $errors->first('user_acct_type_id') }}</strong>
                                             </div>
                                         @endif
                                     </div>

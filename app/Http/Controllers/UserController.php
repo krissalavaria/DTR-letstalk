@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Hash;
 use Symfony\Component\Console\Input\Input;
 
 // define('CHAR_SET', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$11<>?!@#$%^&*()~\/.');
-define('CHAR_SET', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$11*');
+// define('CHAR_SET', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$11*');
 
 class UserController extends Controller
 {
@@ -47,15 +47,12 @@ class UserController extends Controller
 
     public function store(Request $data)
     {
-
-        $this->locker = $this->locker();
-
         $insert_user = CustomUser::create([
             'auth_token' => $this->auth_token(),
             'locker' => $this->locker,
             'employee_no' => $this->employee_no(),
             'username' => $data['username'],
-            'password' => sha1($this->password_generator($data['password'], $this->locker)),
+            'password' => Hash::make($data['password']),
             'first_name' => $data['first_name'],
             'middle_name' => $data['middle_name'],
             'last_name' => $data['last_name'],
@@ -155,33 +152,33 @@ class UserController extends Controller
         return $auth;
     }
 
-    public function password_generator($password, $locker, $length = 100)
-    {
-        $result = "";
-        // $chars = $password;
-        // $charArray = str_split($chars);
+    // public function password_generator($password, $locker, $length = 100)
+    // {
+    //     $result = "";
+    //     // $chars = $password;
+    //     // $charArray = str_split($chars);
 
-        for ($i = 0; $i < $length; $i++) {
-            // $randItem = array_rand($charArray);
-            $result .= "" . strrev($password) . $locker;
-        }
+    //     for ($i = 0; $i < $length; $i++) {
+    //         // $randItem = array_rand($charArray);
+    //         $result .= "" . strrev($password) . $locker;
+    //     }
 
-        return $result;
-    }
+    //     return $result;
+    // }
 
-    public function locker($length = 50)
-    {
-        $result = "";
-        $chars = CHAR_SET;
-        $charArray = str_split($chars);
+    // public function locker($length = 50)
+    // {
+    //     $result = "";
+    //     $chars = CHAR_SET;
+    //     $charArray = str_split($chars);
 
-        for ($i = 0; $i < $length; $i++) {
-            $randItem = array_rand($charArray);
-            $result .= "" . $charArray[$randItem];
-        }
+    //     for ($i = 0; $i < $length; $i++) {
+    //         $randItem = array_rand($charArray);
+    //         $result .= "" . $charArray[$randItem];
+    //     }
 
-        return $result;
-    }
+    //     return $result;
+    // }
 
     public function get_last_employee_no()
     {
@@ -210,4 +207,5 @@ class UserController extends Controller
 
         return $nextReference;
     }
+
 }

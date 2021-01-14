@@ -27,16 +27,17 @@ Route::get('/search_user', 'VueQrCodeReader@search_user');
 Route::post('/insert_entry', 'VueQrCodeReader@insert_entry');
 
 /**
- * Temperature Monitoring
+ * TEMPERATURE
  */
 Route::get ('get_temperature', 'VueQrCodeReader@get_users_temp');
 
+/**
+ * GET TIME SHEETS AND USERS
+ */
 Route::get('get_users', 'VueQrCodeReader@get_all_users');
 Route::get('time_sheets', 'VueQrCodeReader@index');
 
-Route::group(['prefix' => 'scanner_dashboards'], function () {
-    Route::post('add', 'PostController@add');
-    Route::get('edit/{id}', 'PostController@edit');
-    Route::post('update/{id}', 'PostController@update');
-    Route::delete('delete/{id}', 'PostController@delete');
-});
+/**
+ * FILTER BY DATE
+ */
+Route::get('get_by_date', 'VueQrCodeReader@filter_time_sheet_bydate');

@@ -20,11 +20,15 @@ class Employee
             return redirect()->route('login');
         }
 
-        if (Auth::user()->role == 1) {
+        if (Auth::user()->designation_id == 1) {
             return redirect()->route('home');
         }
 
-        if (Auth::user()->role == 4) {
+        if (Auth::user()->designation_id == 2) {
+            return $next($request);
+        }
+
+        if (Auth::user()->designation_id == 4) {
             return redirect()->route('scanner-dashboard');
         }
     }

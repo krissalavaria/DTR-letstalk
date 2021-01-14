@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Departments;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class DepartmentsController extends Controller
 {
@@ -14,7 +15,9 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Departments::latest()->paginate(5);
+
+        return view('departments.index', compact('departments'));
     }
 
     /**
@@ -24,7 +27,7 @@ class DepartmentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('departments.create');
     }
 
     /**
@@ -35,7 +38,12 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Departments::create([
+            'name' => $request['name'],
+        ]);
+
+        return redirect()->route('departments.index')
+            ->with('success', 'Product created successfully.');
     }
 
     /**
@@ -55,9 +63,9 @@ class DepartmentsController extends Controller
      * @param  \App\Departments  $departments
      * @return \Illuminate\Http\Response
      */
-    public function edit(Departments $departments)
+    public function edit(Departments $department)
     {
-        //
+        return view('departments.edit', compact('department'));
     }
 
     /**
@@ -67,9 +75,12 @@ class DepartmentsController extends Controller
      * @param  \App\Departments  $departments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Departments $departments)
+    public function update(Request $request, $id)
     {
-        //
+        Departments::where('ID', $id)->update(['name' => $request['name']]);
+
+        return redirect()->route('departments.index')
+            ->with('success', 'Product updated successfully');
     }
 
     /**
@@ -78,8 +89,11 @@ class DepartmentsController extends Controller
      * @param  \App\Departments  $departments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Departments $departments)
+    public function destroy($id)
     {
-        //
+        Departments::where('ID', $id)->delete();
+
+        return redirect()->route('departments.index')
+            ->with('success', 'Product updated successfully');
     }
 }

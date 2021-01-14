@@ -27,5 +27,9 @@ class Guard
         if (Auth::user()->designation_id == 4) {
             return $next($request);
         }
+
+        if (Auth::user()->designation_id == 2) {
+            return redirect()->route('employee-profile');
+        }
     }
 }

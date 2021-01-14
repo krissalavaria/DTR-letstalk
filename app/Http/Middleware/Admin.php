@@ -27,5 +27,9 @@ class Admin
         if (Auth::user()->designation_id == 4) {
             return redirect()->route('scanner-dashboard');
         }
+
+        if (Auth::user()->designation_id == 2) {
+            return redirect()->route('employee-profile');
+        }
     }
 }

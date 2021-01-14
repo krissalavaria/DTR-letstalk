@@ -7,6 +7,8 @@
 require("./bootstrap");
 
 import VModal from 'vue-js-modal';
+import Vue from 'vue';
+import JsonCSV from 'vue-json-csv';
 
 window.Vue = require("vue");
 
@@ -33,6 +35,7 @@ Vue.component(
     "time-sheet-component",
     require("./components/TimeSheets.vue").default
 );
+Vue.component('downloadCsv', JsonCSV);
 
 Vue.directive("focus", {
     // When the bound element is inserted into the DOM...
@@ -42,7 +45,8 @@ Vue.directive("focus", {
     }
 });
 
-Vue.use(VModal);
+Vue.use(VModal, { dynamicDefault: { draggable: true, resizable: true } });
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -19,7 +19,6 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::post('post-login', 'GenericController@postLogin')->name('post-login');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('Admin');
@@ -32,7 +31,15 @@ Route::get('scanner-entry', function () {
 	return view('scanner.scan-entry');
 })->name('scanner-entry')->middleware('Guard');
 
-Route::get('get_users_temp', 'VueQrCodeReader@get_users_temp')->name('get_users_temp');
+Route::get('employee-profile', function() {
+	return view('employee.employee-profile');
+})->name('employee-profile')->middleware('Employee');
+
+Route::get('employee-profile-settings', function() {
+	return view('employee.employee-profile-settings');
+})->name('employee-profile-settings')->middleware('Employee');
+
+Route::get('get_by_date', 'VueQrCodeReader@filter_time_sheet_bydate');
 
 // Admin Routes
 Route::group(['middleware' => 'Admin'], function () {
@@ -67,6 +74,12 @@ Route::group(['middleware' => 'Admin'], function () {
 	Route::get('scan-entry', function () {
 		return view('pages.scan-entry');
 	})->name('scan-entry');
+
+	// DEPARTMENTS
+	Route::resource('departments', 'DepartmentsController')->middleware('Admin');
+
+	// DESIGNATIONS
+	Route::resource('designations', 'DesignationController')->middleware('Admin');
 
 	// USERS TABLE
 	Route::get('manage-users', 'UserController@list_user')->name('manage-users');

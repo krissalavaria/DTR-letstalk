@@ -7,8 +7,8 @@
                 <div class="col-md-12">
                     <a class="btn btn-primary" href="{{ route('add-new-users') }}">Add new User</a>
                     <form action="{{ route('user.update', $user->id) }}" method="POST">
-                        {{ method_field('PUT') }}
-                        {{ csrf_field() }}
+                        @csrf
+                        @method('PUT')
                         <div class="card">
                             <div>
                                 @if ($errors->any())
@@ -85,15 +85,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <strong>Barangay:</strong>
-                                                    <select class="form-control" name="barangay_id">
-                                                        <option value="{{ $user->barangay_id }}" selected>Update
-                                                            Barangay</option>
-                                                        @foreach ($barangays as $barangay)
-                                                            <option value="{{ $barangay->id }}">
-                                                                {{ $barangay->desc }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                <select class="form-control" name="barangay_id">
+                                                    <option value="{{ $user->barangay_id }}" selected>Update
+                                                        Barangay</option>
+                                                    @foreach ($barangays as $barangay)
+                                                        <option value="{{ $barangay->ID }}">
+                                                            {{ $barangay->desc }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <strong>City/Municipality:</strong>
@@ -101,7 +101,7 @@
                                                     <option value="{{ $user->city_municipality_id }}" selected>Update
                                                         Cities</option>
                                                     @foreach ($cities as $city)
-                                                        <option value="{{ $city->id }}">
+                                                        <option value="{{ $city->ID }}">
                                                             {{ $city->citymun_desc }}
                                                         </option>
                                                     @endforeach
@@ -113,7 +113,7 @@
                                                     <option value="{{ $user->province_id }}" selected>Update Province
                                                     </option>
                                                     @foreach ($provinces as $province)
-                                                        <option value="{{ $province->id }}">
+                                                        <option value="{{ $province->ID }}">
                                                             {{ $province->prov_desc }}
                                                         </option>
                                                     @endforeach
@@ -130,7 +130,7 @@
                                                     <option value="{{ $user->department_id }}" selected>Update Department
                                                     </option>
                                                     @foreach ($departments as $department)
-                                                        <option value="{{ $department->id }}">
+                                                        <option value="{{ $department->ID }}">
                                                             {{ $department->name }}
                                                         </option>
                                                     @endforeach
@@ -142,7 +142,7 @@
                                                     <option value="{{ $user->designation_id }}" selected>Update Designation
                                                     </option>
                                                     @foreach ($designations as $designation)
-                                                        <option value="{{ $designation->id }}">
+                                                        <option value="{{ $designation->ID }}">
                                                             {{ $designation->name }}
                                                         </option>
                                                     @endforeach

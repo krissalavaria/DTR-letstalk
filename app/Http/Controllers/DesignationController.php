@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Designation;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Descriptor\Descriptor;
 
 class DesignationController extends Controller
 {
@@ -14,7 +15,9 @@ class DesignationController extends Controller
      */
     public function index()
     {
-        //
+        $designations = Designation::latest()->paginate(5);
+
+        return view('designations.index', compact('designations'));
     }
 
     /**
@@ -24,7 +27,7 @@ class DesignationController extends Controller
      */
     public function create()
     {
-        //
+        return view('designations.create');
     }
 
     /**
@@ -35,7 +38,13 @@ class DesignationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Designation::create([
+            'name' => $request['name'],
+            'job_description' => $request['job_description'],
+        ]);
+
+        return redirect()->route('designations.index')
+            ->with('success', 'Product created successfully.');
     }
 
     /**
@@ -57,7 +66,7 @@ class DesignationController extends Controller
      */
     public function edit(Designation $designation)
     {
-        //
+        return view('designations.edit', compact('designation'));
     }
 
     /**
@@ -67,9 +76,12 @@ class DesignationController extends Controller
      * @param  \App\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Designation $designation)
+    public function update(Request $request, $id)
     {
-        //
+        Designation::where('ID', $id)->update(array('name' => $request['name'], 'job_description' => $request['job_description']));
+
+        return redirect()->route('designations.index')
+            ->with('success', 'Product updated successfully');
     }
 
     /**
@@ -78,8 +90,11 @@ class DesignationController extends Controller
      * @param  \App\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Designation $designation)
+    public function destroy($id)
     {
-        //
+        Designation::where('ID', $id)->delete();
+
+        return redirect()->route('designations.index')
+            ->with('success', 'Product updated successfully');
     }
 }

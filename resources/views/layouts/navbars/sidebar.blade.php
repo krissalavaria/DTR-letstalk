@@ -26,7 +26,18 @@
                         <p>{{ __('Temperature Monitoring') }}</p>
                     </a>
                 </li>
-
+                <li class="nav-item{{ $activePage == 'departments' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('departments.index') }}">
+                        <i class="material-icons">DP</i>
+                        <p>{{ __('Departments') }}</p>
+                    </a>
+                </li>
+                <li class="nav-item{{ $activePage == 'designations' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('designations.index') }}">
+                        <i class="material-icons">DS</i>
+                        <p>{{ __('Designations') }}</p>
+                    </a>
+                </li>
                 <li
                     class="nav-item {{ $activePage == 'profile' || $activePage == 'user-management' ? ' active' : '' }}">
                     <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
@@ -60,6 +71,22 @@
                 <a class="nav-link" href="{{ route('scanner-dashboard') }}">
                     <i class="material-icons">qr_code</i>
                     <p>{{ __('Scan Entries') }}</p>
+                </a>
+            </li>
+        </ul>
+        @endif
+        @if (Auth::user()->designation_id == 2)
+        <ul class="nav">
+            <li class="nav-item{{ $activePage == 'employee-profile' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('employee-profile') }}">
+                    <i class="material-icons">qr_code</i>
+                    <p>{{ __('Dashboard') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'employee-profile-settings' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('employee-profile-settings') }}">
+                    <span class="sidebar-mini"><strong>UP</strong></span>
+                    <span class="sidebar-normal">{{ __('User profile') }} </span>
                 </a>
             </li>
         </ul>

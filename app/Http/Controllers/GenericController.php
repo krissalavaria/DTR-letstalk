@@ -10,6 +10,7 @@ use App\CityMunicipality;
 use App\CustomUser;
 use App\SalaryCycle;
 use App\SalaryType;
+use App\UserAccountType;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -24,9 +25,10 @@ class GenericController extends Controller
         $departments = Departments::all();
         $designations = Designation::all();
         $salary_types = SalaryType::all();
+        $user_account_types = UserAccountType::all();
         return view(
             'auth.add-new-user',
-            compact('provinces', 'cities', 'barangays', 'departments', 'designations', 'salary_types')
+            compact('provinces', 'cities', 'barangays', 'departments', 'designations', 'salary_types', 'user_account_types')
         );
     }
 
@@ -40,7 +42,7 @@ class GenericController extends Controller
 
         $is_logged_in = CustomUser::where([['username', $username], ['password', $password]])->first();
 
-        var_dump($locker.'-'.$password);
+        var_dump($locker . '-' . $password);
     }
 
     protected function password_generator($password, $locker, $length = 100)

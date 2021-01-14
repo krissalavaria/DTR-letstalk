@@ -44,7 +44,7 @@
                                                 <td>{{ $user->middle_name }}</td>
                                                 <td>{{ $user->last_name }}</td>
                                                 <td>{{ $user->contact_number }}</td>
-                                                <td>
+                                                <td class="d-flex">
                                                     <a href="{{ route('user.edit', $user->id) }}"
                                                         class="btn btn-primary btn-sm">
                                                         <span class="material-icons">

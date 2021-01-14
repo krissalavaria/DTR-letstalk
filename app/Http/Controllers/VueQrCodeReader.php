@@ -49,11 +49,23 @@ class VueQrCodeReader extends Controller
         return response()->json(['user' => $user], Response::HTTP_OK);
     }
 
-
     public function get_all_users()
     {
         $users = CustomUser::all()->toArray();
         return array_reverse($users);
+    }
+
+    public function filter_time_sheet_bydate() 
+    {
+        $date = \Request('q');
+
+        $user_date = DB::table('user_account')
+        ->where('time_sheet.created_at', 'LIKE', "%{$date}%")
+        ->join('time_sheet', 'user_account.id', '=', 'time_sheet.user_account_id')
+        ->select('user_account.*', 'time_sheet.temperature', 'time_sheet.created_at')
+        ->get();
+        
+        return $user_date;
     }
 
 }

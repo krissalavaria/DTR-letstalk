@@ -41,10 +41,10 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Last Name') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('last_name') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" id="input-last_name" type="text" placeholder="{{ __('Last Name') }}" value="{{ old('last_name', auth()->user()->last_name) }}" required />
-                      @if ($errors->has('last_name'))
-                        <span id="last_name-error" class="error text-danger" for="input-last_name">{{ $errors->first('last_name') }}</span>
+                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->last_name) }}" required />
+                      @if ($errors->has('email'))
+                        <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
                       @endif
                     </div>
                   </div>
@@ -62,7 +62,6 @@
           <form method="post" action="{{ route('profile.password') }}" class="form-horizontal">
             @csrf
             @method('put')
-
             <div class="card ">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">{{ __('Change password') }}</h4>

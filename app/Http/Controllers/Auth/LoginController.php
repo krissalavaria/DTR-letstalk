@@ -37,6 +37,10 @@ class LoginController extends Controller
                 $this->redirectTo = 'home';
                 return $this->redirectTo;
                 break;
+            case 2:
+                $this->redirectTo = 'employee-profile';
+                return $this->redirectTo;
+                break;
             case 4:
                 $this->redirectTo = 'scanner-dashboard';
                 return $this->redirectTo;
