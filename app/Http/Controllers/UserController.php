@@ -93,8 +93,7 @@ class UserController extends Controller
         $departments = Departments::all();
         $provinces = Province::all();
         $cities = CityMunicipality::all();
-        $barangays = Barangay::all();
-        return view('users.edit-users', compact('user', 'designations', 'departments', 'provinces', 'provinces', 'cities', 'barangays'));
+        return view('users.edit-users', compact('user', 'designations', 'departments', 'provinces', 'provinces', 'cities'));
     }
 
     public function update(Request $request, CustomUser $user)

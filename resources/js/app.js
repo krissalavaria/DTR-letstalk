@@ -35,6 +35,10 @@ Vue.component(
     "time-sheet-component",
     require("./components/TimeSheets.vue").default
 );
+Vue.component(
+    "employee-time-sheet",
+    require("./components/EmployeeTimeSheet.vue").default
+);
 Vue.component('downloadCsv', JsonCSV);
 
 Vue.directive("focus", {

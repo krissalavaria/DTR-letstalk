@@ -51,4 +51,27 @@ class CustomUser extends Authenticatable
     protected $table = 'user_account';
     protected $dates = ['deleted_at'];
     
+    public function barangays() {
+        return $this->belongsTo('App\Barangay', 'barangay_id');
+    }
+
+    public function cities() {
+        return $this->belongsTo('App\CityMunicipality', 'city_municipality_id');
+    }
+    
+    public function provinces() {
+        return $this->belongsTo('App\Province', 'province_id');
+    }
+
+    public function departments() {
+        return $this->belongsTo('App\Departments', 'department_id');
+    }
+
+    public function designations() {
+        return $this->belongsTo('App\Designation', 'designation_id');
+    }
+
+    public function accounts() {
+        return $this->belongsTo('App\UserAccountType', 'user_acct_type_id');
+    }
 }

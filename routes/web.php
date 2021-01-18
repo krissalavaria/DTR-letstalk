@@ -35,11 +35,13 @@ Route::get('employee-profile', function() {
 	return view('employee.employee-profile');
 })->name('employee-profile')->middleware('Employee');
 
-Route::get('employee-profile-settings', function() {
-	return view('employee.employee-profile-settings');
-})->name('employee-profile-settings')->middleware('Employee');
+Route::get('employee-profile-settings', 'ProfileController@index')->name('employee-profile-settings')->middleware('Employee');
+Route::get('image/{filename}', 'ProfileController@get_profile_image')->name('image.displayImage')->middleware('Employee');
 
 Route::get('get_by_date', 'VueQrCodeReader@filter_time_sheet_bydate');
+
+Route::get('employee_time', 'ProfileController@employee_time')->name('employee_time');
+Route::get('get_user', 'ProfileController@get_user')->name('get_user');
 
 // Admin Routes
 Route::group(['middleware' => 'Admin'], function () {
@@ -81,11 +83,13 @@ Route::group(['middleware' => 'Admin'], function () {
 	// DESIGNATIONS
 	Route::resource('designations', 'DesignationController')->middleware('Admin');
 
+	// USER ACCOUNT TYPES
+	Route::resource('user_account_types', 'UserAccountTypeController')->middleware('Admin');
+
 	// USERS TABLE
 	Route::get('manage-users', 'UserController@list_user')->name('manage-users');
 	Route::get('add-new-users', 'GenericController@getDropDownData')->name('add-new-users');
 	Route::post('add-user', 'UserController@store')->name('add-user');
-
 	Route::get('generate/{user}/qr', 'UserController@generate_qr')->name('generate.qr');
 });
 

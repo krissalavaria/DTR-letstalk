@@ -6,12 +6,24 @@
       Tip 2: you can also add an image using data-image tag
   -->
     <div class="logo">
-        <a href="https://creative-tim.com/" class="simple-text logo-normal">
+        <a href="home" class="simple-text logo-normal">
             {{ __('LETS TALK - DTR') }}
         </a>
+        <div class="row">
+            <div class="col-sm-12 d-flex justify-content-center">
+                <div class="d-flex justify-content-center border rounded-circle">
+                    <img src="{{ url('../material/img/profile/' . auth()->user()->picture . '.png') }}"
+                        alt="profile-picture" style="width: 40px;">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 d-flex justify-content-center">
+                <p style="color: black; font-size: 12px;">{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</p>
+            </div>
+        </div>
     </div>
-    <div class="sidebar-wrapper">
-
+    <div class="sidebar-wrapper" style="overflow-y: scroll;">
         @if (Auth::user()->designation_id == 1)
             <ul class="nav">
                 <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
@@ -36,6 +48,12 @@
                     <a class="nav-link" href="{{ route('designations.index') }}">
                         <i class="material-icons">DS</i>
                         <p>{{ __('Designations') }}</p>
+                    </a>
+                </li>
+                <li class="nav-item{{ $activePage == 'user_account_types' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('user_account_types.index') }}">
+                        <i class="material-icons">account_box</i>
+                        <p>{{ __('Account Types') }}</p>
                     </a>
                 </li>
                 <li
@@ -66,30 +84,30 @@
             </ul>
         @endif
         @if (Auth::user()->designation_id == 4)
-        <ul class="nav">
-            <li class="nav-item{{ $activePage == 'scanner-dashboard' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('scanner-dashboard') }}">
-                    <i class="material-icons">qr_code</i>
-                    <p>{{ __('Scan Entries') }}</p>
-                </a>
-            </li>
-        </ul>
+            <ul class="nav">
+                <li class="nav-item{{ $activePage == 'scanner-dashboard' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('scanner-dashboard') }}">
+                        <i class="material-icons">qr_code</i>
+                        <p>{{ __('Scan Entries') }}</p>
+                    </a>
+                </li>
+            </ul>
         @endif
         @if (Auth::user()->designation_id == 2)
-        <ul class="nav">
-            <li class="nav-item{{ $activePage == 'employee-profile' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('employee-profile') }}">
-                    <i class="material-icons">qr_code</i>
-                    <p>{{ __('Dashboard') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'employee-profile-settings' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('employee-profile-settings') }}">
-                    <span class="sidebar-mini"><strong>UP</strong></span>
-                    <span class="sidebar-normal">{{ __('User profile') }} </span>
-                </a>
-            </li>
-        </ul>
+            <ul class="nav">
+                <li class="nav-item{{ $activePage == 'employee-profile' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('employee-profile') }}">
+                        <i class="material-icons">qr_code</i>
+                        <p>{{ __('Dashboard') }}</p>
+                    </a>
+                </li>
+                <li class="nav-item{{ $activePage == 'employee-profile-settings' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('employee-profile-settings') }}">
+                        <span class="sidebar-mini"><strong>UP</strong></span>
+                        <span class="sidebar-normal">{{ __('User profile') }} </span>
+                    </a>
+                </li>
+            </ul>
         @endif
     </div>
 </div>

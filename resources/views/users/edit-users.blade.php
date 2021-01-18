@@ -85,7 +85,12 @@
                                             </div>
                                             <div class="form-group">
                                                 <strong>Barangay:</strong>
-                                                <select class="form-control" name="barangay_id">
+                                                <select class="js-example-basic-single" name="state">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="WY">Wyoming</option>
+                                                </select>
+                                                {{-- <select class="form-control"
+                                                    name="barangay_id">
                                                     <option value="{{ $user->barangay_id }}" selected>Update
                                                         Barangay</option>
                                                     @foreach ($barangays as $barangay)
@@ -93,7 +98,7 @@
                                                             {{ $barangay->desc }}
                                                         </option>
                                                     @endforeach
-                                                </select>
+                                                </select> --}}
                                             </div>
                                             <div class="form-group">
                                                 <strong>City/Municipality:</strong>
@@ -163,3 +168,9 @@
             </div>
         </div>
     @endsection
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>

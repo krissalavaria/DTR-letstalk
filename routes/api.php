@@ -41,3 +41,9 @@ Route::get('time_sheets', 'VueQrCodeReader@index');
  * FILTER BY DATE
  */
 Route::get('get_by_date', 'VueQrCodeReader@filter_time_sheet_bydate');
+
+/**
+ * EMPLOYEE PROFILE
+ */
+Route::get('employee_time', 'ProfileController@employee_time')->name('employee_time');
+Route::get('get_auth', 'ProfileController@get_user')->name('get_auth');

@@ -1,14 +1,14 @@
-@extends('layouts.app', ['activePage' => 'designations', 'titlePage' => __('Designation List')])
+@extends('layouts.app', ['activePage' => 'user_account_types', 'titlePage' => __('Accounts List')])
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <a class="btn btn-primary" href="{{ route('designations.create') }}">Add new Designation</a>
+                    <a class="btn btn-primary" href="{{ route('user_account_types.create') }}">Add new Account</a>
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">List of Designations</h4>
-                            <p class="card-category">Manage Designations List</p>
+                            <h4 class="card-title ">List of Accounts</h4>
+                            <p class="card-category">Manage Accounts List</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -20,41 +20,41 @@
                                                     #
                                                 </th>
                                                 <th>
-                                                    ID
+                                                    Department
                                                 </th>
                                                 <th>
                                                     Name
                                                 </th>
                                                 <th>
-                                                    Job Description
+                                                    Hourly Rate
                                                 </th>
                                                 <th>
                                                     Actions
                                                 </th>
                                             </thead>
                                             <tbody>
-                                                @foreach ($designations as $designation)
+                                                @foreach ($user_account_types as $account)
                                                     <tr>
                                                         <td>
                                                             {{ $loop->iteration }}
                                                         </td>
                                                         <td>
-                                                            {{ $designation->ID }}
+                                                            {{ $account->departments->name }}
                                                         </td>
                                                         <td>
-                                                            {{ $designation->name }}
+                                                            {{ $account->account_name }}
                                                         </td>
                                                         <td>
-                                                            {{ $designation->job_description }}
+                                                            {{ $account->hourly_rate }}
                                                         </td>
                                                         <td class="d-flex">
                                                             <a class="btn btn-primary btn-sm"
-                                                                href="{{ route('designations.edit', $designation->ID) }}">
+                                                                href="{{ route('user_account_types.edit', $account->ID) }}">
                                                                 <span class="material-icons">
                                                                     edit
                                                                 </span>
                                                             </a>
-                                                            <form class="form" action="{{ route('designations.destroy', $designation->ID) }}" method="POST">
+                                                            <form class="form" action="{{ route('user_account_types.destroy', $account->ID) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button class="btn btn-danger btn-sm" type="submit">
@@ -68,7 +68,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                        {{ $designations->links() }}
+                                        {{ $user_account_types->links() }}
                                     </div>
                                 </div>
                             </div>
