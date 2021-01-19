@@ -33,6 +33,7 @@ class CustomUser extends Authenticatable
         'birthday',
         'contact_number',
         'contact_person',
+        'contact_person_number',
         'security_pin',
         'blk_door',
         'street',

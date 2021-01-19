@@ -6,14 +6,18 @@
       :search-options="{
         enabled: true,
       }"
+      :pagination-options="{
+        enabled: true,
+        perPage: 3,
+      }"
     >
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'action'">
           <a
-            class="btn btn-primary"
+            class="btn btn-primary btn-sm"
             @click="getUserTimeSheet(props.row.id)"
             style="color: white"
-            >View all Entries</a
+            >View</a
           >
         </span>
         <span v-else>

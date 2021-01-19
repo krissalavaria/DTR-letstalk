@@ -91,6 +91,9 @@ Route::group(['middleware' => 'Admin'], function () {
 	Route::get('add-new-users', 'GenericController@getDropDownData')->name('add-new-users');
 	Route::post('add-user', 'UserController@store')->name('add-user');
 	Route::get('generate/{user}/qr', 'UserController@generate_qr')->name('generate.qr');
+	
+	// DASHBOARD REPORTS
+	Route::get('home', 'DashboardController@reports')->name('home');
 });
 
 Route::group(['middleware' => 'auth'], function () {

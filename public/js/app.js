@@ -2082,6 +2082,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60623,6 +60627,10 @@ var render = function() {
           rows: _vm.users,
           "search-options": {
             enabled: true
+          },
+          "pagination-options": {
+            enabled: true,
+            perPage: 3
           }
         },
         scopedSlots: _vm._u([
@@ -60635,7 +60643,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "btn btn-primary",
+                          staticClass: "btn btn-primary btn-sm",
                           staticStyle: { color: "white" },
                           on: {
                             click: function($event) {
@@ -60643,7 +60651,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("View all Entries")]
+                        [_vm._v("View")]
                       )
                     ])
                   : _c("span", [
