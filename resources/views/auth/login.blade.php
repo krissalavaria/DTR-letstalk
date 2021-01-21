@@ -22,7 +22,7 @@
                     <i class="material-icons">email</i>
                   </span>
                 </div>
-                <input type="text" name="username" class="form-control" placeholder="{{ __('Username...') }}" value="{{ old('username', 'krissalavaria') }}" required>
+                <input type="text" name="username" class="form-control" placeholder="{{ __('Username...') }}" value="{{ old('username', 'admin-gab') }}" required>
               </div>
               @if ($errors->has('username'))
                 <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">

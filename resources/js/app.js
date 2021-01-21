@@ -6,9 +6,10 @@
 
 require("./bootstrap");
 
-import VModal from 'vue-js-modal';
-import Vue from 'vue';
-import JsonCSV from 'vue-json-csv';
+import VModal from "vue-js-modal";
+import Vue from "vue";
+import JsonCSV from "vue-json-csv";
+import vSelect from "vue-select";
 
 window.Vue = require("vue");
 
@@ -39,7 +40,14 @@ Vue.component(
     "employee-time-sheet",
     require("./components/EmployeeTimeSheet.vue").default
 );
-Vue.component('downloadCsv', JsonCSV);
+Vue.component("orders-total", require("./components/OrdersTotal.vue").default);
+
+Vue.component("search-barangay", require("./components/BarangayInput.vue").default);
+Vue.component("search-cities", require("./components/CityInput.vue").default);
+
+Vue.component("downloadCsv", JsonCSV);
+
+Vue.component("v-select", vSelect);
 
 Vue.directive("focus", {
     // When the bound element is inserted into the DOM...
@@ -50,7 +58,6 @@ Vue.directive("focus", {
 });
 
 Vue.use(VModal, { dynamicDefault: { draggable: true, resizable: true } });
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

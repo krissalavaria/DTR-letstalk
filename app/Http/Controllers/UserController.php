@@ -47,8 +47,18 @@ class UserController extends Controller
 
     public function store(Request $data)
     {
+        request()->validate([
+            'username' => 'required|unique:user_account',
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
+            'contact_number' => 'required|max:11',
+            'province_id' => 'required',
+        ]);
+
         $insert_user = CustomUser::create([
             'auth_token' => $this->auth_token(),
+            'picture' => $this->auth_token(),
             'locker' => $this->locker,
             'employee_no' => $this->employee_no(),
             'username' => $data['username'],
@@ -60,6 +70,8 @@ class UserController extends Controller
             'birthday' => $data['birthday'],
             'contact_number' => $data['contact_number'],
             'contact_person' => $data['contact_person'],
+            'contact_person_number' => $data['contact_person_number'],
+            'room_cubicle_number' => $data['room_cubicle_number'],
             'security_pin' => $data['security_pin'],
             'blk_door' => $data['blk_door'],
             'street' => $data['street'],
@@ -68,6 +80,7 @@ class UserController extends Controller
             'province_id' => $data['province_id'],
             'department_id' => $data['department_id'],
             'designation_id' => $data['designation_id'],
+            'user_acct_type_id' => $data['user_acct_type_id'],
             'company_profile_id' => $data['company_profile_id'],
             'salary_type_id' => $data['salary_type_id'],
         ]);
@@ -82,7 +95,7 @@ class UserController extends Controller
             ]);
 
             return redirect()->route('add-new-users')
-                ->with('success', 'Product created successfully.');
+                ->withStatus(__('Account successfully created.'));
         }
     }
 
@@ -142,42 +155,22 @@ class UserController extends Controller
      * @return string
      * @throws Exception
      */
-    public function auth_token($id = 1, $length = 10)
+    public function auth_token($id = 1, $length = 5)
     {
         $bytes = random_bytes(ceil($length / 2));
         $random = substr(bin2hex($bytes), 0, $length);
-        $auth = (sha1($random . date('y-m-d:h:i:s') . $random . date('y-m-d:h:i:s')));
+        // $auth = (sha1($random . date('y-m-d:h:i:s') . $random . date('y-m-d:h:i:s')));
+        $auth = (sha1($random . date('y-m-d:h:i:s')));
 
         return $auth;
     }
 
-    // public function password_generator($password, $locker, $length = 100)
-    // {
-    //     $result = "";
-    //     // $chars = $password;
-    //     // $charArray = str_split($chars);
+    public function generate_ID($id)
+    {
+        $users = CustomUser::find($id);
 
-    //     for ($i = 0; $i < $length; $i++) {
-    //         // $randItem = array_rand($charArray);
-    //         $result .= "" . strrev($password) . $locker;
-    //     }
-
-    //     return $result;
-    // }
-
-    // public function locker($length = 50)
-    // {
-    //     $result = "";
-    //     $chars = CHAR_SET;
-    //     $charArray = str_split($chars);
-
-    //     for ($i = 0; $i < $length; $i++) {
-    //         $randItem = array_rand($charArray);
-    //         $result .= "" . $charArray[$randItem];
-    //     }
-
-    //     return $result;
-    // }
+        return view('users.generate-id', compact('users'));
+    }
 
     public function get_last_employee_no()
     {

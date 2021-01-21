@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\Console\Input\Input;
+use App\Barangay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,3 +49,20 @@ Route::get('get_by_date', 'VueQrCodeReader@filter_time_sheet_bydate');
  */
 Route::get('employee_time', 'ProfileController@employee_time')->name('employee_time');
 Route::get('get_auth', 'ProfileController@get_user')->name('get_auth');
+
+/**
+ * ORDERS TOTAL
+ */
+Route::get('get_order_total', 'DashboardController@get_order_total')->name('get_order_total');
+
+/**
+ * BARANGAY and CITIES DROPDOWN
+ */
+Route::get('/search-barangay',function(Request $request){
+    $query = $request['query'];
+    $users = Barangay::where('desc','like','%'.$query.'%')->get();
+    return response()->json($users);
+   });
+
+Route::get('barangays', 'GenericController@barangays')->name('barangays');
+Route::get('cities', 'GenericController@cities')->name('cities');

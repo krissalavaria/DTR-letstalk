@@ -34,6 +34,7 @@ class CustomUser extends Authenticatable
         'contact_number',
         'contact_person',
         'contact_person_number',
+        'room_cubicle_number',
         'security_pin',
         'blk_door',
         'street',
@@ -42,6 +43,7 @@ class CustomUser extends Authenticatable
         'province_id',
         'department_id',
         'designation_id',
+        'user_acct_type_id',
         'company_profile_id',
     ];
 

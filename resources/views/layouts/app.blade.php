@@ -21,7 +21,6 @@
     <link href="{{ asset('material') }}/demo/demo.css" rel="stylesheet" />
 
     <!-- SELECT2 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     
 </head>
 
@@ -165,9 +164,7 @@
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{ asset('material') }}/demo/demo.js"></script>
     <script src="{{ asset('material') }}/js/settings.js"></script>
-
-    <!-- SELECT2 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    
     @stack('js')
 </body>
 

@@ -21,15 +21,29 @@ class GenericController extends Controller
     {
         $provinces = Province::all();
         $cities = CityMunicipality::all();
-        $barangays = Barangay::all();
         $departments = Departments::all();
         $designations = Designation::all();
         $salary_types = SalaryType::all();
         $user_account_types = UserAccountType::all();
+
         return view(
             'auth.add-new-user',
-            compact('provinces', 'cities', 'barangays', 'departments', 'designations', 'salary_types', 'user_account_types')
+            compact('provinces', 'cities', 'departments', 'designations', 'salary_types', 'user_account_types')
         );
+    }
+
+    public function barangays()
+    {
+        $barangays = Barangay::all()->toArray();
+        
+        return array_reverse($barangays);
+    }
+
+    public function cities()
+    {
+        $cities = CityMunicipality::all()->toArray();
+        
+        return array_reverse($cities);
     }
 
     public function postLogin(Request $request)

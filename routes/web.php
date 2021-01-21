@@ -91,9 +91,11 @@ Route::group(['middleware' => 'Admin'], function () {
 	Route::get('add-new-users', 'GenericController@getDropDownData')->name('add-new-users');
 	Route::post('add-user', 'UserController@store')->name('add-user');
 	Route::get('generate/{user}/qr', 'UserController@generate_qr')->name('generate.qr');
+	Route::get('generate/{id}/id', 'UserController@generate_ID')->name('generate-id')->middleware('Admin');
 	
 	// DASHBOARD REPORTS
 	Route::get('home', 'DashboardController@reports')->name('home');
+	Route::get('get_order_total', 'DashboardController@get_order_total')->name('get_order_total');
 });
 
 Route::group(['middleware' => 'auth'], function () {

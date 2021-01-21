@@ -51,6 +51,11 @@
                                                             edit
                                                         </span>
                                                     </a>
+                                                    <a href="{{ route('generate-id', $user->id) }}" class="btn btn-success btn-sm">
+                                                        <span class="material-icons">
+                                                            perm_identity
+                                                        </span>
+                                                    </a>
                                                     <a href="{{ route('generate.qr', $user->id) }}" class="btn btn-warning btn-sm">
                                                         <span class="material-icons">
                                                             qr_code
