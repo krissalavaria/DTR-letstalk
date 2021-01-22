@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use QrCode;
 use App\Barangay;
 use App\CityMunicipality;
@@ -19,9 +20,6 @@ use App\Http\Requests\UserRequest;
 use App\Province;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\Console\Input\Input;
-
-// define('CHAR_SET', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$11<>?!@#$%^&*()~\/.');
-// define('CHAR_SET', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$11*');
 
 class UserController extends Controller
 {
@@ -41,20 +39,28 @@ class UserController extends Controller
     public function generate_qr($id)
     {
         $user = CustomUser::find($id);
+        $qr_code = QrCode::size(300)->generate($user->auth_token);
         
-        return QrCode::size(300)->generate($user->auth_token);
+        return view('users.generate-id', compact('qr_code'));
     }
 
     public function store(Request $data)
     {
-        request()->validate([
-            'username' => 'required|unique:user_account',
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'last_name' => 'required',
-            'contact_number' => 'required|max:11',
-            'province_id' => 'required',
-        ]);
+        Validator::extend('without_spaces', function ($attr, $value) {
+            return preg_match('/^\S*$/u', $value);
+        });
+
+        request()->validate(
+            [
+                'username' => 'required|without_spaces|unique:user_account',
+                'first_name' => 'required',
+                'middle_name' => 'required',
+                'last_name' => 'required',
+                'contact_number' => 'required|max:11',
+                'province_id' => 'required',
+            ],
+            ['username.without_spaces' => 'Whitespace not allowed on username.']
+        );
 
         $insert_user = CustomUser::create([
             'auth_token' => $this->auth_token(),
@@ -142,11 +148,9 @@ class UserController extends Controller
         return redirect()->route('manage-users')->with('success', 'Post updated successfully');
     }
 
-    public function list_user()
+    public function list_user(CustomUser $model)
     {
-        $user_lists = CustomUser::all();
-
-        return view('pages.manage-users', compact('user_lists'));
+        return view('pages.manage-users', ['user_lists' => $model->paginate(10)]);
     }
 
     /**
@@ -199,5 +203,4 @@ class UserController extends Controller
 
         return $nextReference;
     }
-
 }

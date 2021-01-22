@@ -11,11 +11,12 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                              <div class="col-sm-12 d-flex justify-content-center">
-                                <div class="d-flex justify-content-center border rounded-circle">
-                                  <img src="{{ url('../material/img/profile/'.auth()->user()->picture.'.png') }}" alt="profile-picture" style="width: 150px;">
+                                <div class="col-sm-12 d-flex justify-content-center">
+                                    <div class="d-flex justify-content-center border rounded-circle">
+                                        <img src="{{ url('../material/img/profile/' . auth()->user()->picture . '.png') }}"
+                                            alt="profile-picture" style="width: 150px;">
+                                    </div>
                                 </div>
-                              </div>
                             </div>
                         </div>
                     </div>
@@ -179,7 +180,7 @@
                                                         class="form-group{{ $errors->has('security_pin') ? ' has-danger' : '' }}">
                                                         <input
                                                             class="form-control{{ $errors->has('security_pin') ? ' is-invalid' : '' }}"
-                                                            name="security_pin" id="input-security_pin" type="text"
+                                                            name="security_pin" id="input-security_pin" type="password"
                                                             placeholder="{{ __('Security Pin') }}"
                                                             value="{{ old('security_pin', auth()->user()->security_pin) }}"
                                                             required />
@@ -227,45 +228,54 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <label class="col-sm-2 col-form-label">{{ __('Barangay') }}</label>
-                                                <div class="col-sm-8">
-                                                    <div
-                                                        class="form-group{{ $errors->has('barangay_id') ? ' has-danger' : '' }}">
-                                                        <select type="text" name="barangay_id" class="form-control">
-                                                            <option value="{{ auth()->user()->barangays->barangay_id }}"
-                                                                selected>{{ auth()->user()->barangays->desc }}</option>
-                                                            @foreach ($barangays as $barangay)
-                                                                <option value="{{ $barangay->ID }}">{{ $barangay->desc }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                        @if ($errors->has('barangay_id'))
-                                                            <span id="last_name-error" class="error text-danger"
-                                                                for="input-barangay_id">{{ $errors->first('barangay_id') }}</span>
-                                                        @endif
+                                            <div id="app">
+                                                <div class="row">
+                                                    <label class="col-sm-2 col-form-label">{{ __('Barangay') }}</label>
+                                                    <div class="col-sm-8">
+                                                        <div
+                                                            class="form-group{{ $errors->has('barangay_id') ? ' has-danger' : '' }}">
+                                                            <search-barangay></search-barangay>
+                                                            {{-- <select type="text"
+                                                                name="barangay_id" class="form-control">
+                                                                <option value="{{ auth()->user()->barangays->barangay_id }}"
+                                                                    selected>{{ auth()->user()->barangays->desc }}</option>
+                                                                @foreach ($barangays as $barangay)
+                                                                    <option value="{{ $barangay->ID }}">
+                                                                        {{ $barangay->desc }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select> --}}
+                                                            @if ($errors->has('barangay_id'))
+                                                                <span id="last_name-error" class="error text-danger"
+                                                                    for="input-barangay_id">{{ $errors->first('barangay_id') }}</span>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <label class="col-sm-2 col-form-label">{{ __('City/Municipality') }}</label>
-                                                <div class="col-sm-8">
-                                                    <div
-                                                        class="form-group{{ $errors->has('city_municipality_id') ? ' has-danger' : '' }}">
-                                                        <select type="text" name="city_municipality_id"
-                                                            class="form-control">
-                                                            <option
-                                                                value="{{ auth()->user()->cities->city_municipality_id }}"
-                                                                selected>{{ auth()->user()->cities->citymun_desc }}</option>
-                                                            @foreach ($cities as $city)
-                                                                <option value="{{ $city->ID }}">{{ $city->citymun_desc }}
+                                                <div class="row">
+                                                    <label
+                                                        class="col-sm-2 col-form-label">{{ __('City/Municipality') }}</label>
+                                                    <div class="col-sm-8">
+                                                        <div
+                                                            class="form-group{{ $errors->has('city_municipality_id') ? ' has-danger' : '' }}">
+                                                            <search-cities></search-cities>
+                                                            {{-- <select type="text" name="city_municipality_id"
+                                                                class="form-control">
+                                                                <option
+                                                                    value="{{ auth()->user()->cities->city_municipality_id }}"
+                                                                    selected>{{ auth()->user()->cities->citymun_desc }}
                                                                 </option>
-                                                            @endforeach
-                                                        </select>
-                                                        @if ($errors->has('city_municipality_id'))
-                                                            <span id="last_name-error" class="error text-danger"
-                                                                for="input-city_municipality_id">{{ $errors->first('city_municipality_id') }}</span>
-                                                        @endif
+                                                                @foreach ($cities as $city)
+                                                                    <option value="{{ $city->ID }}">
+                                                                        {{ $city->citymun_desc }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select> --}}
+                                                            @if ($errors->has('city_municipality_id'))
+                                                                <span id="last_name-error" class="error text-danger"
+                                                                    for="input-city_municipality_id">{{ $errors->first('city_municipality_id') }}</span>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,8 +285,8 @@
                                                     <div
                                                         class="form-group{{ $errors->has('province_id') ? ' has-danger' : '' }}">
                                                         <select type="text" name="province_id" class="form-control">
-                                                            <option value="{{ auth()->user()->provinces->province_id }}"
-                                                                selected>{{ auth()->user()->provinces->prov_desc }}</option>
+                                                            {{-- <option value="{{ auth()->user()->provinces->province_id }}"
+                                                                selected>{{ auth()->user()->provinces->prov_desc }}</option> --}}
                                                             @foreach ($provinces as $province)
                                                                 <option value="{{ $province->ID }}">
                                                                     {{ $province->prov_desc }}
@@ -296,8 +306,8 @@
                                                     <div
                                                         class="form-group{{ $errors->has('department_id') ? ' has-danger' : '' }}">
                                                         <select type="text" name="department_id" class="form-control">
-                                                            <option value="{{ auth()->user()->departments->department_id }}"
-                                                                selected>{{ auth()->user()->departments->name }}</option>
+                                                            {{-- <option value="{{ auth()->user()->departments->department_id }}"
+                                                                selected>{{ auth()->user()->departments->name }}</option> --}}
                                                             @foreach ($departments as $department)
                                                                 <option value="{{ $department->ID }}">
                                                                     {{ $department->name }}
@@ -312,37 +322,15 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="col-sm-2 col-form-label">{{ __('Designation') }}</label>
-                                                <div class="col-sm-8">
-                                                    <div
-                                                        class="form-group{{ $errors->has('designation_id') ? ' has-danger' : '' }}">
-                                                        <select type="text" name="designation_id" class="form-control">
-                                                            <option
-                                                                value="{{ auth()->user()->designations->designation_id }}"
-                                                                selected>{{ auth()->user()->designations->name }}</option>
-                                                            @foreach ($designations as $designation)
-                                                                <option value="{{ $designation->ID }}">
-                                                                    {{ $designation->name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                        @if ($errors->has('designation_id'))
-                                                            <span id="last_name-error" class="error text-danger"
-                                                                for="input-designation_id">{{ $errors->first('designation_id') }}</span>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
                                                 <label class="col-sm-2 col-form-label">{{ __('Account') }}</label>
                                                 <div class="col-sm-8">
                                                     <div
                                                         class="form-group{{ $errors->has('user_acct_type_id') ? ' has-danger' : '' }}">
                                                         <select type="text" name="user_acct_type_id" class="form-control">
-                                                            <option
+                                                            {{-- <option
                                                                 value="{{ auth()->user()->accounts->user_acct_type_id }}"
                                                                 selected>{{ auth()->user()->accounts->account_name }}
-                                                            </option>
+                                                            </option> --}}
                                                             @foreach ($user_account_types as $account)
                                                                 <option value="{{ $account->ID }}">
                                                                     {{ $account->account_name }}

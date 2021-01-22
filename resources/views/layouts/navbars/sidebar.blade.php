@@ -12,8 +12,8 @@
         <div class="row">
             <div class="col-sm-12 d-flex justify-content-center">
                 <div class="d-flex justify-content-center border rounded-circle">
-                    <img src="{{ url('../material/img/profile/' . auth()->user()->picture . '.png') }}"
-                        alt="profile-picture" style="width: 40px;">
+                    {{-- <img src="{{ url('../material/img/profile/' . auth()->user()->picture . '.png') }}"
+                        alt="profile-picture" style="width: 40px;"> --}}
                 </div>
             </div>
         </div>

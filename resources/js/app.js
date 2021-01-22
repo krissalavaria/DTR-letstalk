@@ -9,7 +9,6 @@ require("./bootstrap");
 import VModal from "vue-js-modal";
 import Vue from "vue";
 import JsonCSV from "vue-json-csv";
-import vSelect from "vue-select";
 
 window.Vue = require("vue");
 
@@ -46,8 +45,6 @@ Vue.component("search-barangay", require("./components/BarangayInput.vue").defau
 Vue.component("search-cities", require("./components/CityInput.vue").default);
 
 Vue.component("downloadCsv", JsonCSV);
-
-Vue.component("v-select", vSelect);
 
 Vue.directive("focus", {
     // When the bound element is inserted into the DOM...

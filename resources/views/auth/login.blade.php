@@ -37,7 +37,7 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" value="{{ !$errors->has('password') ? "Sac83193" : "" }}" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" value="{{ !$errors->has('password') ? "letstalk2021" : "" }}" required>
               </div>
               @if ($errors->has('password'))
                 <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
@@ -59,7 +59,7 @@
           </div>
         </div>
       </form>
-      <div class="row">
+      {{-- <div class="row">
         <div class="col-6">
             @if (Route::has('password.request'))
                 <a href="{{ route('password.request') }}" class="text-light">
@@ -67,7 +67,7 @@
                 </a>
             @endif
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
 </div>

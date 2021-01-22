@@ -56,11 +56,11 @@
                                                             perm_identity
                                                         </span>
                                                     </a>
-                                                    <a href="{{ route('generate.qr', $user->id) }}" class="btn btn-warning btn-sm">
+                                                    {{-- <a href="{{ route('generate.qr', $user->id) }}" class="btn btn-warning btn-sm">
                                                         <span class="material-icons">
                                                             qr_code
                                                         </span>
-                                                    </a>
+                                                    </a> --}}
                                                     <form action="{{ route('user.destroy', $user->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
@@ -75,6 +75,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $user_lists->links() }}
                             </div>
                         </div>
                     </div>

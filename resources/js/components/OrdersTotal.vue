@@ -33,17 +33,30 @@
       name="orders-modal"
       style="z-index: 10"
     >
-      <vue-good-table
-        max-height="300px"
-        :fixed-header="true"
-        :columns="orders_column"
-        :rows="orders"
-        :search-options="{ enabled: true }"
-        :pagination-options="{
-          enabled: true,
-        }"
-      >
-      </vue-good-table>
+      <div class="card">
+        <div class="card-header card-header-warning">
+          <h4 class="card-title">List of Orders</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <div class="col-sm-12 d-flex">
+              <div class="table-responsive">
+                <vue-good-table
+                  max-height="300px"
+                  :fixed-header="true"
+                  :columns="orders_column"
+                  :rows="orders"
+                  :search-options="{ enabled: true }"
+                  :pagination-options="{
+                    enabled: true,
+                  }"
+                >
+                </vue-good-table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </modal>
   </div>
 </template>
@@ -56,6 +69,7 @@ export default {
       users: [],
       users_order: "",
       orders: [],
+      order: "",
       columns: [
         {
           label: "Employee #",
@@ -103,8 +117,7 @@ export default {
           console.log(err);
         });
 
-      this.orders = event.target.value;
-
+      this.order = event.target.value;
       this.show();
     },
 
@@ -121,10 +134,6 @@ export default {
     axios.get("api/get_users").then((response) => {
       this.users = response.data;
     });
-  },
-
-  mount() {
-    this.show();
   },
 };
 </script>

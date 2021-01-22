@@ -85,20 +85,9 @@
                                             </div>
                                             <div class="form-group">
                                                 <strong>Barangay:</strong>
-                                                <select class="js-example-basic-single" name="state">
-                                                    <option value="AL">Alabama</option>
-                                                    <option value="WY">Wyoming</option>
-                                                </select>
-                                                {{-- <select class="form-control"
-                                                    name="barangay_id">
-                                                    <option value="{{ $user->barangay_id }}" selected>Update
-                                                        Barangay</option>
-                                                    @foreach ($barangays as $barangay)
-                                                        <option value="{{ $barangay->ID }}">
-                                                            {{ $barangay->desc }}
-                                                        </option>
-                                                    @endforeach
-                                                </select> --}}
+                                                <div id="app">
+                                                    <search-barangay></search-barangay>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <strong>City/Municipality:</strong>
