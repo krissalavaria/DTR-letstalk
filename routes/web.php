@@ -96,6 +96,7 @@ Route::group(['middleware' => 'Admin'], function () {
 	// DASHBOARD REPORTS
 	Route::get('home', 'DashboardController@reports')->name('home');
 	Route::get('get_order_total', 'DashboardController@get_order_total')->name('get_order_total');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {

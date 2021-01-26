@@ -43,6 +43,7 @@ class CustomUser extends Authenticatable
         'province_id',
         'department_id',
         'designation_id',
+        'tl_id',
         'user_acct_type_id',
         'company_profile_id',
     ];

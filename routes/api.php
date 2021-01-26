@@ -66,3 +66,8 @@ Route::get('/search-barangay',function(Request $request){
 
 Route::get('barangays', 'GenericController@barangays')->name('barangays');
 Route::get('cities', 'GenericController@cities')->name('cities');
+
+/**
+ * AVAILABLE PRODUCTS LIST
+ */
+Route::get('products', 'DashboardController@get_menu')->name('products');

@@ -6,12 +6,11 @@ use DB;
 use App\Orderline;
 use App\CustomUser;
 use App\TimeSheet;
+use App\Product;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-
-
     public function reports()
     {
         // Users Count
@@ -45,5 +44,12 @@ class DashboardController extends Controller
             ->where('orderhead.order_status_id', '=', 1)->get();
 
             return $order_total;
+    }
+
+    public function get_menu()
+    {
+        $products = Product::where('is_active', 1)->get();
+
+        return $products;
     }
 }

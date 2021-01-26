@@ -26,23 +26,25 @@ class GenericController extends Controller
         $salary_types = SalaryType::all();
         $user_account_types = UserAccountType::all();
 
+        $tl_user = CustomUser::where('designation_id', 7)->get();
+
         return view(
             'auth.add-new-user',
-            compact('provinces', 'cities', 'departments', 'designations', 'salary_types', 'user_account_types')
+            compact('provinces', 'cities', 'departments', 'designations', 'salary_types', 'user_account_types', 'tl_user')
         );
     }
 
     public function barangays()
     {
         $barangays = Barangay::all()->toArray();
-        
+
         return array_reverse($barangays);
     }
 
     public function cities()
     {
         $cities = CityMunicipality::all()->toArray();
-        
+
         return array_reverse($cities);
     }
 

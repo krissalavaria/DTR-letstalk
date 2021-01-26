@@ -86,6 +86,7 @@ class UserController extends Controller
             'province_id' => $data['province_id'],
             'department_id' => $data['department_id'],
             'designation_id' => $data['designation_id'],
+            'tl_id' => $data['tl_id'],
             'user_acct_type_id' => $data['user_acct_type_id'],
             'company_profile_id' => $data['company_profile_id'],
             'salary_type_id' => $data['salary_type_id'],
@@ -203,4 +204,5 @@ class UserController extends Controller
 
         return $nextReference;
     }
+
 }

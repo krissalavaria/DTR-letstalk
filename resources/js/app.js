@@ -9,6 +9,8 @@ require("./bootstrap");
 import VModal from "vue-js-modal";
 import Vue from "vue";
 import JsonCSV from "vue-json-csv";
+import VueHtmlToPaper from 'vue-html-to-paper';
+
 
 window.Vue = require("vue");
 
@@ -40,6 +42,7 @@ Vue.component(
     require("./components/EmployeeTimeSheet.vue").default
 );
 Vue.component("orders-total", require("./components/OrdersTotal.vue").default);
+Vue.component("products-list", require("./components/Products.vue").default);
 
 Vue.component("search-barangay", require("./components/BarangayInput.vue").default);
 Vue.component("search-cities", require("./components/CityInput.vue").default);
@@ -55,6 +58,23 @@ Vue.directive("focus", {
 });
 
 Vue.use(VModal, { dynamicDefault: { draggable: true, resizable: true } });
+
+const options = {
+    name: '_blank',
+    specs: [
+      'fullscreen=yes',
+      'titlebar=yes',
+      'scrollbars=yes'
+    ],
+    styles: [
+      'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+      'https://unpkg.com/kidlat-css/css/kidlat.css'
+    ]
+  }
+
+Vue.use(VueHtmlToPaper, options);
+
+Vue.config.devtools = false;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

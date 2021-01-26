@@ -411,6 +411,29 @@
                                             @endif
                                         </div>
                                         <div
+                                            class="bmd-form-group{{ $errors->has('tl_id') ? ' has-danger' : '' }}">
+                                            <div class="input-group">
+                                                {{-- <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="material-icons">face</i>
+                                                    </span>
+                                                </div> --}}
+                                                <select type="text" name="tl_id" class="form-control">
+                                                    <option value="0" selected>SELECT TEAM LEADER</option>
+                                                    @foreach ($tl_user as $tl)
+                                                        <option value="{{ $tl->id }}">{{ $tl->first_name.' '.$tl->last_name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            @if ($errors->has('tl_id'))
+                                                <div id="tl_id-error" class="error text-danger pl-3"
+                                                    for="tl_id" style="display: block;">
+                                                    <strong>{{ $errors->first('tl_id') }}</strong>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div
                                             class="bmd-form-group{{ $errors->has('salary_type_id') ? ' has-danger' : '' }}">
                                             <div class="input-group">
                                                 {{-- <div class="input-group-prepend">
