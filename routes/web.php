@@ -97,6 +97,11 @@ Route::group(['middleware' => 'Admin'], function () {
 	Route::get('home', 'DashboardController@reports')->name('home');
 	Route::get('get_order_total', 'DashboardController@get_order_total')->name('get_order_total');
 
+	// SCHEDULES
+	Route::resource('schedules', 'SchedulesController');
+	Route::get('get-schedules/{id}/schedules', 'SchedulesController@schedules')->name('get-schedules');
+
+	Route::get('orderinfo', 'DashboardController@get_order_info')->name('orderinfo');
 });
 
 Route::group(['middleware' => 'auth'], function () {

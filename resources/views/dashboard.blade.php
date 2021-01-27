@@ -133,19 +133,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-warning">
-                                <h4 class="card-title">Employees Orders</h4>
-                                <p class="card-category">List of Employees Orders</p>
-                            </div>
-                            <div class="card-body table-responsive">
-                                <div class="app">
-                                    <orders-total></orders-total>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

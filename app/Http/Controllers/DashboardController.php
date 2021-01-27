@@ -35,15 +35,31 @@ class DashboardController extends Controller
         $user_id = \Request('q');
 
         $order_total = DB::table('orderhead')
-            ->where('orderhead.user_account_id', 'LIKE', "%{$user_id}%")
+            ->where('orderhead.user_account_id', 'LIKE', "{$user_id}")
             ->join('orderline', 'orderhead.order_no', '=', 'orderline.order_no')
             ->join('user_account', 'user_account.id', '=', 'orderhead.user_account_id')
-            ->groupBy('orderhead.order_no', 'user_account.employee_no', 'user_account.first_name', 'user_account.middle_name', 'user_account.last_name')
+            ->groupBy('orderhead.order_no', 'user_account.employee_no', 'user_account.first_name', 'user_account.middle_name', 'user_account.last_name', 'orderhead.ID')
             ->selectRaw('sum(orderline.total_amount) as sum, orderhead.order_no, 
-                        user_account.employee_no, user_account.first_name, user_account.middle_name, user_account.last_name')
+                        user_account.employee_no, user_account.first_name, user_account.middle_name, user_account.last_name, orderhead.ID')
             ->where('orderhead.order_status_id', '=', 1)->get();
 
             return $order_total;
+    }
+
+    public function get_order_info()
+    {
+        $id = \Request('q');
+
+        $order_info = DB::table('orderhead')
+        ->where('orderhead.id', 'LIKE', "{$id}")
+        ->join('orderline', 'orderhead.order_no', '=', 'orderline.order_no')
+        ->join('product', 'product.ID', '=', 'orderline.product_id')
+        ->join('product_unit', 'product_unit.ID', '=', 'orderline.product_unit')
+        ->join('product_category', 'product_category.ID', '=', 'orderline.product_category_id')
+        ->selectRaw('orderline.order_no, orderline.qty, product.product_name, product_unit.unit_name, orderline.product_price')
+        ->get();
+
+        return $order_info;
     }
 
     public function get_menu()

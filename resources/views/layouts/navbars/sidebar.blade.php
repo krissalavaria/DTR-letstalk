@@ -78,6 +78,12 @@
                                     <span class="sidebar-normal"> {{ __('User Management') }} </span>
                                 </a>
                             </li>
+                            <li class="nav-item{{ $activePage == 'schedules' ? ' active' : '' }}">
+                                <a class="nav-link" href="{{ route('schedules.index') }}">
+                                    <span class="sidebar-mini"> UM </span>
+                                    <span class="sidebar-normal"> {{ __('User Schedules') }} </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

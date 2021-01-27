@@ -2,14 +2,16 @@
   <div>
     <button @click="print" class="btn btn-danger mb-3">PRINT MENU</button>
     <div id="products">
-      <table class="table table-bordered">
-        <thead class="text-primary">
-          <th scope="col">Name</th>
-          <th scope="col">Price</th>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+          </tr>
         </thead>
         <tbody>
           <tr v-for="prod in products" :key="prod.id">
-            <td scope="row">{{ prod.product_name }}</td>
+            <td>{{ prod.product_name }}</td>
             <td>{{ prod.price }}</td>
           </tr>
         </tbody>
@@ -18,11 +20,23 @@
   </div>
 </template>
 <script>
+import "vue-good-table/dist/vue-good-table.css";
+import { VueGoodTable } from "vue-good-table";
 export default {
   data() {
     return {
       output: null,
       products: [],
+      columns: [
+        {
+          label: "Name",
+          field: "product_name",
+        },
+        {
+          label: "Price",
+          field: "price",
+        },
+      ],
     };
   },
   methods: {

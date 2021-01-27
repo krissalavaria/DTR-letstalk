@@ -54,6 +54,7 @@ Route::get('get_auth', 'ProfileController@get_user')->name('get_auth');
  * ORDERS TOTAL
  */
 Route::get('get_order_total', 'DashboardController@get_order_total')->name('get_order_total');
+Route::get('get_order_info', 'DashboardController@get_order_info')->name('get_order_info');
 
 /**
  * BARANGAY and CITIES DROPDOWN

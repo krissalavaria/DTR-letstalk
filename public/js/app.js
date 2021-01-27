@@ -2229,6 +2229,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "my-component",
   data: function data() {
@@ -2237,6 +2282,8 @@ __webpack_require__.r(__webpack_exports__);
       users_order: "",
       orders: [],
       order: "",
+      orderinfo: [],
+      info: "",
       columns: [{
         label: "Employee #",
         field: "employee_no"
@@ -2251,6 +2298,9 @@ __webpack_require__.r(__webpack_exports__);
         field: "action"
       }],
       orders_column: [{
+        label: "ID",
+        field: "ID"
+      }, {
         label: "Employee #",
         field: "employee_no"
       }, {
@@ -2259,6 +2309,25 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         label: "Total Credit",
         field: "sum"
+      }, {
+        label: "View Orders",
+        field: "orders"
+      }],
+      order_info: [{
+        label: "Order #",
+        field: "order_no"
+      }, {
+        label: "Product",
+        field: "product_name"
+      }, {
+        label: "Unit",
+        field: "unit_name"
+      }, {
+        label: "Qty",
+        field: "qty"
+      }, {
+        label: "Price",
+        field: "product_price"
       }]
     };
   },
@@ -2274,6 +2343,23 @@ __webpack_require__.r(__webpack_exports__);
       this.order = event.target.value;
       this.show();
     },
+    getOrderInfo: function getOrderInfo(id) {
+      var _this2 = this;
+
+      axios.get("api/get_order_info?q=" + id).then(function (response) {
+        _this2.orderinfo = response.data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+      this.info = event.target.value;
+      this.showorderInfo();
+    },
+    showorderInfo: function showorderInfo() {
+      this.$modal.show("order-info");
+    },
+    hideorderInfo: function hideorderInfo() {
+      this.$modal.hide("order-info");
+    },
     show: function show() {
       this.$modal.show("orders-modal");
     },
@@ -2282,10 +2368,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios.get("api/get_users").then(function (response) {
-      _this2.users = response.data;
+      _this3.users = response.data;
     });
   }
 });
@@ -2303,6 +2389,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_good_table_dist_vue_good_table_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-good-table/dist/vue-good-table.css */ "./node_modules/vue-good-table/dist/vue-good-table.css");
+/* harmony import */ var vue_good_table_dist_vue_good_table_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_good_table_dist_vue_good_table_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_good_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-good-table */ "./node_modules/vue-good-table/dist/vue-good-table.esm.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2328,11 +2417,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       output: null,
-      products: []
+      products: [],
+      columns: [{
+        label: "Name",
+        field: "product_name"
+      }, {
+        label: "Price",
+        field: "price"
+      }]
     };
   },
   methods: {
@@ -61159,6 +61259,90 @@ var render = function() {
                           "pagination-options": {
                             enabled: true
                           }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "table-row",
+                            fn: function(props) {
+                              return [
+                                props.column.field == "orders"
+                                  ? _c("span", [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn btn-warning btn-sm",
+                                          staticStyle: { color: "white" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.getOrderInfo(
+                                                props.row.ID
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("View")]
+                                      )
+                                    ])
+                                  : _c("span", [
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(
+                                            props.formattedRow[
+                                              props.column.field
+                                            ]
+                                          ) +
+                                          "\n                  "
+                                      )
+                                    ])
+                              ]
+                            }
+                          }
+                        ])
+                      })
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "modal",
+        {
+          staticStyle: { "z-index": "10" },
+          attrs: {
+            width: 1000,
+            height: 600,
+            adaptive: true,
+            name: "order-info"
+          }
+        },
+        [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header card-header-warning" }, [
+              _c("h4", { staticClass: "card-title" }, [_vm._v("Order Info")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("div", { staticClass: "col-sm-12 d-flex" }, [
+                  _c(
+                    "div",
+                    { staticClass: "table-responsive" },
+                    [
+                      _c("vue-good-table", {
+                        attrs: {
+                          "max-height": "300px",
+                          "fixed-header": true,
+                          columns: _vm.order_info,
+                          rows: _vm.orderinfo,
+                          "search-options": { enabled: true },
+                          "pagination-options": {
+                            enabled: true
+                          }
                         }
                       })
                     ],
@@ -61204,16 +61388,14 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { attrs: { id: "products" } }, [
-      _c("table", { staticClass: "table table-bordered" }, [
+      _c("table", { staticClass: "table" }, [
         _vm._m(0),
         _vm._v(" "),
         _c(
           "tbody",
           _vm._l(_vm.products, function(prod) {
             return _c("tr", { key: prod.id }, [
-              _c("td", { attrs: { scope: "row" } }, [
-                _vm._v(_vm._s(prod.product_name))
-              ]),
+              _c("td", [_vm._v(_vm._s(prod.product_name))]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(prod.price))])
             ])
@@ -61229,10 +61411,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "text-primary" }, [
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")])
+      ])
     ])
   }
 ]
