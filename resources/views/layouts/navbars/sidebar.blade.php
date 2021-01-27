@@ -99,7 +99,7 @@
                 </li>
             </ul>
         @endif
-        @if (Auth::user()->designation_id == 2)
+        @if (Auth::user()->designation_id == 2 || Auth::user()->designation_id == 7)
             <ul class="nav">
                 <li class="nav-item{{ $activePage == 'employee-profile' ? ' active' : '' }}">
                     <a class="nav-link" href="{{ route('employee-profile') }}">

@@ -35,7 +35,7 @@ class DashboardController extends Controller
         $user_id = \Request('q');
 
         $order_total = DB::table('orderhead')
-            ->where('orderhead.user_account_id', 'LIKE', "{$user_id}")
+            ->where('orderhead.user_account_id', 'LIKE', "%{$user_id}%")
             ->join('orderline', 'orderhead.order_no', '=', 'orderline.order_no')
             ->join('user_account', 'user_account.id', '=', 'orderhead.user_account_id')
             ->groupBy('orderhead.order_no', 'user_account.employee_no', 'user_account.first_name', 'user_account.middle_name', 'user_account.last_name', 'orderhead.ID')

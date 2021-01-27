@@ -28,6 +28,10 @@ class Employee
             return $next($request);
         }
 
+        if (Auth::user()->designation_id == 7) {
+            return $next($request);
+        }
+
         if (Auth::user()->designation_id == 4) {
             return redirect()->route('scanner-dashboard');
         }
