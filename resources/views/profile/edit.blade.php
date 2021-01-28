@@ -265,7 +265,7 @@
                                         <div class="col-sm-8">
                                             <div
                                                 class="form-group{{ $errors->has('province_id') ? ' has-danger' : '' }}">
-                                                <select type="text" name="province_id" class="form-control">
+                                                <select type="text" name="province_id" class="form-control" required>
                                                     {{-- <option value="{{ auth()->user()->provinces->province_id }}"
                                                         selected>{{ auth()->user()->provinces->prov_desc }}</option> --}}
                                                     @foreach ($provinces as $province)
@@ -286,7 +286,7 @@
                                         <div class="col-sm-8">
                                             <div
                                                 class="form-group{{ $errors->has('department_id') ? ' has-danger' : '' }}">
-                                                <select type="text" name="department_id" class="form-control">
+                                                <select type="text" name="department_id" class="form-control" required>
                                                     {{-- <option value="{{ auth()->user()->departments->department_id }}"
                                                         selected>{{ auth()->user()->departments->name }}</option> --}}
                                                     @foreach ($departments as $department)
@@ -307,7 +307,7 @@
                                         <div class="col-sm-8">
                                             <div
                                                 class="form-group{{ $errors->has('user_acct_type_id') ? ' has-danger' : '' }}">
-                                                <select type="text" name="user_acct_type_id" class="form-control">
+                                                <select type="text" name="user_acct_type_id" class="form-control" required>
                                                     {{-- <option
                                                         value="{{ auth()->user()->accounts->user_acct_type_id }}"
                                                         selected>{{ auth()->user()->accounts->account_name }}

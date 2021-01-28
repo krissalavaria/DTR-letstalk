@@ -11,24 +11,6 @@
     <datalist id="barangays">
       <option v-for="result in barangays" :key="result.ID" :value="result.ID">{{ result.desc }}</option>
     </datalist>
-    <!-- <input
-      type="text"
-      placeholder="Input for Barangay"
-      v-model="query"
-      @input="autoComplete"
-      class="form-control"
-      name="barangay_id"
-      list="results"
-      required
-    />
-
-    <div class="panel-footer" v-if="results.length">
-      <datalist id="results">
-        <option v-for="result in results" :key="result.ID" :value="result.ID" class="form-control">
-          {{ result.desc }}
-        </option>
-      </datalist>
-    </div> -->
   </div>
 </template>
 <script>

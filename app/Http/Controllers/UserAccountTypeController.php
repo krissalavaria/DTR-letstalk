@@ -39,6 +39,14 @@ class UserAccountTypeController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate(
+            [
+                'account_name' => 'required',
+                'hourly_rate' => 'required',
+                'department_id' => 'required',
+            ]
+        );
+
         UserAccountType::create([
             'account_name' => $request['account_name'],
             'hourly_rate' => $request['hourly_rate'],

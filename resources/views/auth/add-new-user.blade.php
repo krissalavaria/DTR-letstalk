@@ -150,6 +150,7 @@
                                                 </div>
                                             @endif
                                         </div>
+                                        <label class="mt-2" for="birthday">BIRTHDAY</label>
                                         <div class="bmd-form-group{{ $errors->has('birthday') ? ' has-danger' : '' }}">
                                             <div class="input-group">
                                                 {{-- <div class="input-group-prepend">
@@ -310,7 +311,7 @@
                                                         <i class="material-icons">face</i>
                                                     </span>
                                                 </div> --}}
-                                                <select type="text" name="province_id" class="form-control">
+                                                <select type="text" name="province_id" class="form-control" required>
                                                     <option value="0" selected>Select Province</option>
                                                     @foreach ($provinces as $province)
                                                         <option value="{{ $province->ID }}">{{ $province->prov_desc }}
@@ -372,8 +373,8 @@
                                                         <i class="material-icons">face</i>
                                                     </span>
                                                 </div> --}}
-                                                <select type="text" name="department_id" class="form-control">
-                                                    <option value="0" selected>SELECT DEPARTMENT</option>
+                                                <select type="text" name="department_id" class="form-control" required>
+                                                    <option value="" selected>SELECT DEPARTMENT</option>
                                                     @foreach ($departments as $department)
                                                         <option value="{{ $department->ID }}">{{ $department->name }}
                                                         </option>
@@ -395,8 +396,8 @@
                                                         <i class="material-icons">face</i>
                                                     </span>
                                                 </div> --}}
-                                                <select type="text" name="designation_id" class="form-control">
-                                                    <option value="0" selected>SELECT DESIGNATION</option>
+                                                <select type="text" name="designation_id" class="form-control" required>
+                                                    <option value="" selected>SELECT DESIGNATION</option>
                                                     @foreach ($designations as $designation)
                                                         <option value="{{ $designation->ID }}">{{ $designation->name }}
                                                         </option>
@@ -418,8 +419,8 @@
                                                         <i class="material-icons">face</i>
                                                     </span>
                                                 </div> --}}
-                                                <select type="text" name="tl_id" class="form-control">
-                                                    <option value="0" selected>SELECT TEAM LEADER</option>
+                                                <select type="text" name="tl_id" class="form-control" required>
+                                                    <option value="" selected>SELECT TEAM LEADER</option>
                                                     @foreach ($tl_user as $tl)
                                                         <option value="{{ $tl->id }}">{{ $tl->first_name.' '.$tl->last_name }}
                                                         </option>
@@ -441,8 +442,8 @@
                                                         <i class="material-icons">face</i>
                                                     </span>
                                                 </div> --}}
-                                                <select type="text" name="salary_type_id" class="form-control">
-                                                    <option value="0" selected>SELECT SALARY TYPE</option>
+                                                <select type="text" name="salary_type_id" class="form-control" required>
+                                                    <option value="" selected>SELECT SALARY TYPE</option>
                                                     @foreach ($salary_types as $salarytype)
                                                         <option value="{{ $salarytype->ID }}">{{ $salarytype->type }}
                                                         </option>
@@ -464,8 +465,8 @@
                                                         <i class="material-icons">face</i>
                                                     </span>
                                                 </div> --}}
-                                                <select type="text" name="user_acct_type_id" class="form-control">
-                                                    <option value="0" selected>SELECT ACCOUNT EX: 51TALK/ACADSOC</option>
+                                                <select type="text" name="user_acct_type_id" class="form-control" required>
+                                                    <option value="" selected>SELECT ACCOUNT EX: 51TALK/ACADSOC</option>
                                                     @foreach ($user_account_types as $user_acct_type)
                                                         <option value="{{ $user_acct_type->ID }}">
                                                             {{ $user_acct_type->account_name }}

@@ -40,7 +40,7 @@ class UserController extends Controller
     {
         $user = CustomUser::find($id);
         $qr_code = QrCode::size(300)->generate($user->auth_token);
-        
+
         return view('users.generate-id', compact('qr_code'));
     }
 
@@ -57,7 +57,17 @@ class UserController extends Controller
                 'middle_name' => 'required',
                 'last_name' => 'required',
                 'contact_number' => 'required|max:11',
+                'contact_person' => 'required',
+                'contact_person_number' => 'required',
+                'room_cubicle_number' => 'required',
+                'security_pin' => 'required',
                 'province_id' => 'required',
+                'barangay_id' => 'required',
+                'city_municipality_id' => 'required',
+                'designation_id' => 'required',
+                'department_id' => 'required',
+                'tl_id' => 'required',
+                'user_acct_type_id' => 'required',
             ],
             ['username.without_spaces' => 'Whitespace not allowed on username.']
         );
@@ -204,5 +214,4 @@ class UserController extends Controller
 
         return $nextReference;
     }
-
 }

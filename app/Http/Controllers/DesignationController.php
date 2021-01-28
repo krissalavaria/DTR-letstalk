@@ -38,6 +38,13 @@ class DesignationController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate(
+            [
+                'name' => 'required',
+                'job_description' => 'required',
+            ]
+        );
+
         Designation::create([
             'name' => $request['name'],
             'job_description' => $request['job_description'],
