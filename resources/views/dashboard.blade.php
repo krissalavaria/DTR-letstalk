@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-4 col-md-12">
                         <div class="card">
                             <div class="card-header card-header-danger">
                                 <h4 class="card-title">List of Menu Today</h4>
@@ -133,7 +133,17 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="col-lg-8 col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-success">
+                                <h4 class="card-title">List of Menu Today</h4>
+                                <p class="card-category">Print the List of Menu</p>
+                            </div>
+                            <div class="card-body table-responsive">
+                                <daily-orders></daily-orders>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

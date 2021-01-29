@@ -102,6 +102,9 @@ Route::group(['middleware' => 'Admin'], function () {
 	Route::get('get-schedules/{id}/schedules', 'SchedulesController@schedules')->name('get-schedules');
 
 	Route::get('orderinfo', 'DashboardController@get_order_info')->name('orderinfo');
+
+	Route::get('overall', 'DashboardController@overall_orders')->name('overall');
+	Route::get('totalorders', 'DashboardController@get_users_total')->name('totalorders');
 });
 
 Route::group(['middleware' => 'auth'], function () {

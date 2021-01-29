@@ -41,6 +41,10 @@ Vue.component(
     "employee-time-sheet",
     require("./components/EmployeeTimeSheet.vue").default
 );
+Vue.component(
+    "daily-orders",
+    require("./components/DailyOrders.vue").default
+);
 Vue.component("orders-total", require("./components/OrdersTotal.vue").default);
 Vue.component("products-list", require("./components/Products.vue").default);
 

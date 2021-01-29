@@ -72,3 +72,5 @@ Route::get('cities', 'GenericController@cities')->name('cities');
  * AVAILABLE PRODUCTS LIST
  */
 Route::get('products', 'DashboardController@get_menu')->name('products');
+Route::get('all-orders', 'DashboardController@overall_orders')->name('all-orders');
+Route::get('daily-orders', 'DashboardController@get_users_total')->name('daily-orders');

@@ -5,50 +5,53 @@
         <div class="row">
             <div class="col-sm-12 d-flex">
                 <div class="col-sm-3.5">
-                    <img class="img-id" src="{{ url('../material/img/ID/FrontID2.png') }}" alt="front-id">
+                    <img class="img-id" src="{{ url('../material/img/ID/front_id.png') }}" alt="front-id">
                     <div class="info-wrapper">
                         <div class="col-sm-12 d-flex justify-content-around">
-                            <p class="id-info employee-no" style="margin-top: -30px; ">
-                                {{ $users->first_name . ' ' . $users->middle_name . ' ' . $users->last_name }}</p>
+                            <img height="130px;" width="100px;" style="margin-top: -178px; border: 3px solid #01002a;" src="{{ url('http://localhost/letstalk-system/employee/assets/images/Logo/Profile/'.$users->picture) }}" alt="">
                         </div>
-                        <div class="col-sm-12 d-flex justify-content-center">
-                            <p class="id-info employee-no">{{ $users->designations->name }}</p>
+                        <div class="col-sm-12 d-flex justify-content-around">
+                            <p class="id-info employee-no" style="margin-top: -30px;">
+                                {{ ucwords($users->first_name) . ' ' . ucwords($users->middle_name) . ' ' . ucwords($users->last_name) }}</p>
+                        </div>
+                        <div class="col-sm-12 d-flex justify-content-center" style="margin-top: -20px;">
+                            <p class="id-info employee-no">{{ ucwords($users->designations->job_description) }}</p>
                         </div>
                         <div class="col-sm-12 d-flex justify-content-between">
                             <p class="id-info">Employee No.:</p>
-                            <p class="id-info employee-no">{{ $users->employee_no }}</p>
+                            <p class="id-info employee-no">{{ ucwords($users->employee_no) }}</p>
                         </div>
                         <div class="col-sm-12 d-flex justify-content-between">
                             <p class="id-info">Contact No.:</p>
-                            <p class="id-info contact-no">{{ $users->contact_number }}</p>
+                            <p class="id-info contact-no">{{ ucwords($users->contact_number) }}</p>
                         </div>
                         <div class="col-sm-12 d-flex justify-content-between">
                             <p class="id-info">Contact Person:</p>
-                            <p class="id-info contact-person">{{ $users->contact_person }}</p>
+                            <p class="id-info contact-person">{{ ucwords($users->contact_person) }}</p>
                         </div>
                         <div class="col-sm-12 d-flex justify-content-between">
-                            <p class="id-info">Conact Person No:</p>
-                            <p class="id-info contact-person-number">{{ $users->contact_person_number }}
+                            <p class="id-info">Contact Person No:</p>
+                            <p class="id-info contact-person-number">{{ ucwords($users->contact_person_number) }}
                             </p>
                         </div>
-                        <div class="col-sm-12 d-flex justify-content-center" style="margin-top: -5px;">
-                            <p class="add-info address-1">{{ $users->blk_door }} {{ $users->street }}
-                                {{ $users->barangays->desc }}
+                        <div class="col-sm-12 d-flex justify-content-center" style="margin-top: -10px;">
+                            <p class="add-info address-1">{{ ucwords($users->blk_door) }} {{ ucwords($users->street) }}
+                                {{ ucwords($users->barangays->desc) }}
                             </p>
                         </div>
                         <div class="col-sm-12 d-flex justify-content-center" style="margin-top: -25px;">
-                            <p class="add-info address-2">{{ $users->cities->citymun_desc }}
-                                {{ $users->provinces->prov_desc }}
+                            <p class="add-info address-2">{{ ucwords($users->cities->citymun_desc) }}
+                                {{ ucwords($users->provinces->prov_desc) }}
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3.5" style="margin-left: 10px;">
-                    <img class="img-id" src="{{ url('../material/img/ID/BackID.png') }}" alt="front-id">
+                    <img class="img-id" src="{{ url('../material/img/ID/back_id.png') }}" alt="front-id">
                     <div class="col-sm-12 d-flex justify-content-center">
                         <div class="qr-code-wrapper">
-                            <div class="qr-code">
-                                {!! QrCode::size(153)->generate($users->auth_token) !!}
+                            <div class="qr-code" style="margin-top: -24px;">
+                                {!! QrCode::size(147)->generate($users->auth_token) !!}
                             </div>
                         </div>
                     </div>
@@ -64,7 +67,7 @@
     }
 
     .qr-code {
-        border: white solid 4px;
+        border: white solid 3px;
         background-color: white;
         margin-left: 3px;
     }
@@ -82,7 +85,7 @@
     .add-info {
         font-weight: 500;
         color: #01002a;
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .info-wrapper {
