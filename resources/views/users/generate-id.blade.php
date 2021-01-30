@@ -55,6 +55,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-12 d-flex justify-content-center" style="margin-top: -200px;">
+                        <div class="signature">
+                            <img class="sign-img" src="{{ url('../material/img/ID/Signature.png') }}" alt="signature">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,6 +107,10 @@
 
     .main-panel>.footer {
         display: none;
+    }
+
+    .sign-img {
+        height: 200px;
     }
 
 </style>
